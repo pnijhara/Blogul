@@ -26,6 +26,14 @@ let Blogul = mongoose.model("Blogul", blogulSchema)
 
 // RESTFUL ROUTES
 
+app.get("/", function(req, res){
+    res.redirect("/blogul")
+})
+
+app.get("/blogul", function(req, res){
+    res.render("index")
+})
+
 app.listen(process.env.PORT || 3000, function(){
     console.log("Blogul server started at PORT: 3000")
 })
