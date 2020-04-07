@@ -31,7 +31,13 @@ app.get("/", function(req, res){
 })
 
 app.get("/blogul", function(req, res){
-    res.render("index")
+    Blogul.find({}, function(err, bloguls){
+        if(err){
+            console.log(err)
+        } else{
+            res.render("index", {bloguls: bloguls})
+        }
+    })
 })
 
 app.listen(process.env.PORT || 3000, function(){
