@@ -11,7 +11,7 @@ mongoose.connect("mongodb://localhost:27017/blogul",
     }
 )
 app.set("view engine", "ejs")
-app.use(express.static("public"))
+app.use(express.static(__dirname + '/public'))
 app.use(bodyParser.urlencoded({extended: true}))
 
 //MONGOOSE/MODEL CONFIG
@@ -25,7 +25,7 @@ let blogulSchema = new mongoose.Schema({
 let Blogul = mongoose.model("Blogul", blogulSchema)
 
 // RESTFUL ROUTES
-
+// INDEX ROUTE
 app.get("/", function(req, res){
     res.redirect("/blogul")
 })
@@ -38,6 +38,11 @@ app.get("/blogul", function(req, res){
             res.render("index", {bloguls: bloguls})
         }
     })
+})
+
+//NEW ROUTE
+app.get("/blogul/new", function(req, res){
+    res.render("new")
 })
 
 app.listen(process.env.PORT || 3000, function(){
