@@ -5,7 +5,7 @@
     <% for( let i = 0; i < bloguls.length; i++ ) { %>
         <h2><%= bloguls[i]["title"] %></h2>
         <img src="<%= bloguls[i]["image"] %>" alt="">
-        <p><%= bloguls[i]["body"] %></p>
+        <p><%= bloguls[i]["body"].substring(0, 100) %>....</p>
         <p><%= bloguls[i]["created"] %></p>
         <a href="/blogul/<%= bloguls[i]["id"] %> ">Read More</a>
     <% } %>
