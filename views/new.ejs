@@ -3,11 +3,20 @@
 <div class="content">
     <div class="ui main text container segment">
         <div class="ui huge header">NEW BLOGUL</div>
-        <form action="/blogul" method="POST">
-            <input type="text" name="blogul[title]" placeholder="title">
-            <input type="text" name="blogul[image]" placeholder="image url">
-            <input type="text" name="blogul[body]" placeholder="blog post content goes here">
-            <input type="submit" name="" id="">
+        <form class="ui form" action="/blogul" method="POST">
+            <div class="field">
+                <label>Title</label>
+                <input type="text" name="blogul[title]" placeholder="title">
+            </div>
+            <div class="field">
+                <label>Image URL</label>
+                <input type="text" name="blogul[image]" placeholder="image url">
+            </div>
+            <div class="field">
+                <label>Body</label>
+                <textarea name="blogul[body]" placeholder="blog post content goes here"></textarea>
+            </div>
+            <button class="ui violet basic button" type="submit">Submit</button>
         </form>
     </div>
 </div>
