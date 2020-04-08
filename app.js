@@ -56,6 +56,16 @@ app.post("/blogul", function(req, res){
 	})
 })
 
+//SHOW ROUTE
+app.get("/blogul/:id", function(req, res){
+    Blogul.findById(req.params.id, function(err, foundblogul){
+		if(err){
+			console.log(err)
+		} else{
+			res.render("show", {foundblogul: foundblogul})
+		}
+	})
+})
 
 app.listen(process.env.PORT || 3000, function(){
     console.log("Blogul server started at PORT: 3000")
