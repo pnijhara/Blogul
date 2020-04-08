@@ -6,15 +6,15 @@
         <form class="ui form" action="/blogul" method="POST">
             <div class="field">
                 <label>Title</label>
-                <input type="text" name="blogul[title]" placeholder="title">
+                <input required type="text" name="blogul[title]" placeholder="title">
             </div>
             <div class="field">
                 <label>Image URL</label>
-                <input type="text" name="blogul[image]" placeholder="image url">
+                <input required type="text" name="blogul[image]" placeholder="image url">
             </div>
             <div class="field">
                 <label>Body</label>
-                <textarea name="blogul[body]" placeholder="blog post content goes here"></textarea>
+                <textarea required name="blogul[body]" placeholder="blog post content goes here"></textarea>
             </div>
             <button class="ui violet basic button" type="submit">Submit</button>
         </form>
