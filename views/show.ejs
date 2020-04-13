@@ -13,7 +13,7 @@
             <h4><%= foundblogul.body%></h4>
         </div>
         <a class="ui inverted yellow button" href="/blogul/<%= foundblogul.id %>/edit ">Edit</a>
-        <form action="/blogul/<%= foundblogul.id %>?_method=DELETE" method="POST">
+        <form id="delete-button" action="/blogul/<%= foundblogul.id %>?_method=DELETE" method="POST">
             <button class="ui inverted orange button">Delete</button>
         </form>
     </div>

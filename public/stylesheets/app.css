@@ -4,3 +4,6 @@ i.icon {
 .content-blog {
     padding-top: 60px;
 }
+#delete-button {
+    display: inline;
+}
