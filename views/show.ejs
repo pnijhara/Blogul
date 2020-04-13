@@ -12,6 +12,9 @@
         <div class="content-blog">
             <h4><%= foundblogul.body%></h4>
         </div>
+        <form action="/blogul/<%= foundblogul.id %>?_method=DELETE" method="POST">
+            <button class="ui inverted orange button">Delete</button>
+        </form>
     </div>
 </div>
 

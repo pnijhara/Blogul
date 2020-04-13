@@ -91,6 +91,17 @@ app.put("/blogul/:id", function(req, res){
     })
 })
 
+//DELETE ROUTE
+app.delete("/blogul/:id", function(req, res){
+    Blogul.findByIdAndRemove(req.params.id, function(err){
+        if(err){
+            console.log(err)
+        } else{
+            res.redirect("/blogul")
+        }
+    })
+})
+
 app.listen(process.env.PORT || 3000, function(){
     console.log("Blogul server started at PORT: 3000")
 })
