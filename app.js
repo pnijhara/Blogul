@@ -67,6 +67,17 @@ app.get("/blogul/:id", function(req, res){
 	})
 })
 
+//EDIT ROUTE
+app.get("/blogul/:id/edit", function(req, res){
+    Blogul.findById(req.params.id, function(err, foundblogul){
+		if(err){
+			res.render("/blogul")
+		} else{
+			res.render("edit", {foundblogul: foundblogul})
+		}
+	})
+})
+
 app.listen(process.env.PORT || 3000, function(){
     console.log("Blogul server started at PORT: 3000")
 })
