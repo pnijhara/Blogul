@@ -1,5 +1,6 @@
 let express = require("express")
 let methodOverride = require("method-override")
+let expressSanitizer = require("express-sanitizer")
 let bodyParser = require("body-parser")
 let mongoose = require("mongoose")
 app = express()
@@ -14,7 +15,9 @@ mongoose.connect("mongodb://localhost:27017/blogul",
 app.set("view engine", "ejs")
 app.use(express.static(__dirname + '/public'))
 app.use(bodyParser.urlencoded({extended: true}))
+app.use(expressSanitizer())
 app.use(methodOverride("_method"))
+
 
 //MONGOOSE/MODEL CONFIG
 let blogulSchema = new mongoose.Schema({
@@ -27,6 +30,7 @@ let blogulSchema = new mongoose.Schema({
 let Blogul = mongoose.model("Blogul", blogulSchema)
 
 // RESTFUL ROUTES
+
 // INDEX ROUTE
 app.get("/", function(req, res){
     res.redirect("/blogul")
@@ -49,6 +53,7 @@ app.get("/blogul/new", function(req, res){
 
 //CREATE ROUTE
 app.post("/blogul", function(req, res){
+    req.body.blogul.body = req.sanitize(req.body.blogul.body)
 	Blogul.create(req.body.blogul, function(err, newblogul){
 		if(err){
 			res.render('new')
@@ -82,6 +87,7 @@ app.get("/blogul/:id/edit", function(req, res){
 
 //UPDATE ROUTE
 app.put("/blogul/:id", function(req, res){
+    req.body.blogul.body = req.sanitize(req.body.blogul.body)
     Blogul.findByIdAndUpdate(req.params.id, req.body.blogul, function(err, updatedblogul){
         if(err){
             res.redirect("/blogul")
